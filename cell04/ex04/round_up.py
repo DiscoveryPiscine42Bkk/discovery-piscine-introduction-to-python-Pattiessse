@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import math
 
-n = input("Give me aq number:")
-i = float(n)
-j = math.ceil(i)
+a = input("Give me a number:")
+b = float(a)
+c = math.ceil(b)
 
-print(j)
+print(c)
