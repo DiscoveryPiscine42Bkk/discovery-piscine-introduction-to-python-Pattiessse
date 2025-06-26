@@ -20,7 +20,7 @@ def checkmate(board_str):
         return 0 <= y < size and 0 <= x < len(board[y])
 
     # check if pawn is attacking king
-    def pawn_threats():
+    def pawn():
         dy = 1
         for dx in [-1, 1]:
             ny, nx = king_pos[0] + dy, king_pos[1] + dx
@@ -28,7 +28,7 @@ def checkmate(board_str):
                 return True
         return False
     #check bishop
-    def bishop_threats():
+    def bishop():
         for dy, dx in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
             y, x = king_pos
             while True:
@@ -42,7 +42,7 @@ def checkmate(board_str):
                     break
         return False
  #check rook
-    def rook_threats():
+    def rook():
         for dy, dx in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             y, x = king_pos
             while True:
@@ -56,7 +56,7 @@ def checkmate(board_str):
                     break
         return False
     #final check
-    if pawn_threats() or bishop_threats() or rook_threats():
+    if pawn() or bishop() or rook():
         print("Success")
     else:
         print("Fail")
