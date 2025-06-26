@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
+
 import sys
-if len(sys.argv) == 1:
-    print("none\n")
+import re
+
+if len(sys.argv) > 1:
+    for i in range(len(sys.argv)):
+        if sys.argv[i] == sys.argv[0]:
+            continue
+        if re.findall(r'ism', sys.argv[i]):
+            continue
+        else:
+            print(sys.argv[i] + "ism")
 else:
-    for i in range(1, len(sys.argv)):
-        if not sys.argv[i].endswith("ism"):
-            print(sys.argv[i]+"ism")
-#chmod +x append_it.py
+    print("none")
