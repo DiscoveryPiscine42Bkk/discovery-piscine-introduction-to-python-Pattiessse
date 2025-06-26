@@ -2,7 +2,7 @@ def checkmate(board_str):
     board = [list(row) for row in board_str.strip().split('\n')]
     size = len(board)
 
-    # Locate the King
+    # Locate King
     king_pos = None
     for y in range(size):
         for x in range(len(board[y])):
@@ -19,7 +19,7 @@ def checkmate(board_str):
     def in_bounds(y, x):
         return 0 <= y < size and 0 <= x < len(board[y])
 
-    # Pawns threaten diagonally upward (assume pawns are below the King)
+    # check if pawn is attacking king
     def pawn_threats():
         dy = 1
         for dx in [-1, 1]:
@@ -27,7 +27,7 @@ def checkmate(board_str):
             if in_bounds(ny, nx) and board[ny][nx] == 'P':
                 return True
         return False
-
+    #check bishop
     def bishop_threats():
         for dy, dx in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
             y, x = king_pos
@@ -41,7 +41,7 @@ def checkmate(board_str):
                         return True
                     break
         return False
-
+ #check rook
     def rook_threats():
         for dy, dx in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             y, x = king_pos
@@ -55,7 +55,7 @@ def checkmate(board_str):
                         return True
                     break
         return False
-
+    #final check
     if pawn_threats() or bishop_threats() or rook_threats():
         print("Success")
     else:
